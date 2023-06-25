@@ -1,0 +1,16 @@
+------------------------ STEPS -------------------------
+1. Go to grafbase.com and sign up. you can sign up via github.
+
+2. Go to https://www.npmjs.com/package/@grafbase/sdk and install the following dependencies
+- npm install @grafbase/sdk --save-dev
+- grafbase init --config-format typescript
+
+3. Once you run the grafbase init --config-format typescript, a grafbase will be generated for you.
+that's where you can write your model. Refer to the code written in grafbase/grafbase.config.ts
+
+4. Once you have sign up using your github. connect the repository that contains the grafbase folder. click
+on import and after importing the project, you can always deploy it. after deploying, click on connect and 2
+random grafbase keys will be generated. the first key is the API End point while the second key is the API
+keys.
+
+5. copy those keys and store them in your .env folder
