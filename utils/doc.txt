@@ -14,3 +14,5 @@ random grafbase keys will be generated. the first key is the API End point while
 keys.
 
 5. copy those keys and store them in your .env folder
+
+6. Note: you can generate a random secret key by using this: -----> openssl rand -base64 32 <-----
