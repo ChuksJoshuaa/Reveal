@@ -61,3 +61,8 @@ export interface ProjectForm {
   githubUrl: string;
   category: string;
 }
+
+export interface FooterInterface {
+  title: string;
+  links: string[];
+}
