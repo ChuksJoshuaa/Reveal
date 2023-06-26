@@ -1,7 +1,6 @@
 "use client";
 
 import { CategoryInterface } from "@/utils/interfaces";
-import { Fragment } from "react";
 import { Menu } from "@headlessui/react";
 import Image from "next/image";
 
@@ -25,7 +24,7 @@ const CustomMenu = ({ state, title, setState, filters }: CategoryInterface) => {
             />
           </Menu.Button>
         </div>
-        <Menu.Items className="flexStart custom_menu-btn">
+        <Menu.Items className="flexStart custom_menu-items">
           {filters?.map((tag) => (
             <Menu.Item key={tag}>
               <button
@@ -33,7 +32,9 @@ const CustomMenu = ({ state, title, setState, filters }: CategoryInterface) => {
                 value={tag}
                 className="custom_menu-item"
                 onClick={(e) => setState(e.currentTarget.value)}
-              ></button>
+              >
+                {tag}
+              </button>
             </Menu.Item>
           ))}
         </Menu.Items>

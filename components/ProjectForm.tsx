@@ -2,8 +2,8 @@
 
 import { SessionInterface } from "@/utils/interfaces";
 import Image from "next/image";
-import { ChangeEvent, FormEvent } from "react";
-import { FormField, CustomMenu } from ".";
+import { ChangeEvent, FormEvent, useState } from "react";
+import { FormField, CustomMenu, Button } from ".";
 import { categoryFilters } from "@/utils/constants";
 
 const ProjectForm = ({
@@ -13,7 +13,7 @@ const ProjectForm = ({
   type: string;
   session: SessionInterface;
 }) => {
-  const form = {
+  let initialState = {
     image: "",
     title: "",
     description: "",
@@ -21,10 +21,48 @@ const ProjectForm = ({
     githubUrl: "",
     category: "",
   };
-  const image = null;
-  const handleFormSubmit = (e: FormEvent) => {};
-  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {};
-  const handleStateChange = (fieldName: string, value: string) => {};
+
+  const [form, setForm] = useState(initialState);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleFormSubmit = (e: FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+
+    try {
+      if (type === "create") {
+      }
+    } catch (error) {}
+  };
+
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.includes("image")) {
+      return alert("Please upload an image file");
+    }
+
+    const reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const result = reader.result as string;
+
+      handleStateChange("image", result);
+    };
+  };
+
+  const handleStateChange = (fieldName: string, value: string) => {
+    setForm((prevState) => ({
+      ...prevState,
+      [fieldName]: value,
+    }));
+  };
   return (
     <form onSubmit={handleFormSubmit} className="flexStart form">
       <div className="flexStart form_image-container">
@@ -59,6 +97,7 @@ const ProjectForm = ({
       />
       <FormField
         title="Description"
+        isTextArea
         state={form.description}
         placeholder="Showcase and discover cool developer projects"
         setState={(value: string) => handleStateChange("description", value)}
@@ -87,7 +126,20 @@ const ProjectForm = ({
       />
 
       <div className="flexStart w-full">
-        <button>Create</button>
+        <Button
+          title={
+            isSubmitting
+              ? `${type === "create" ? "Submitting" : "Updating"}`
+              : `${type === "create" ? "Create" : "Edit"}`
+          }
+          type="submit"
+          leftIcon={isSubmitting ? "" : "/plus.svg"}
+          rightIcon={null}
+          isSubmitting={isSubmitting}
+          bgColor="bg-primary-purple"
+          textColor={null}
+          handleClick={handleFormSubmit}
+        />
       </div>
     </form>
   );

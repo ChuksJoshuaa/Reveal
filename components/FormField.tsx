@@ -14,7 +14,7 @@ const FormField = ({
 
       {isTextArea ? (
         <textarea
-          placeholder="placeholder"
+          placeholder={placeholder}
           value={state}
           required
           className="form_field-input"
@@ -23,7 +23,7 @@ const FormField = ({
       ) : (
         <input
           type={type}
-          placeholder="placeholder"
+          placeholder={placeholder}
           value={state}
           required
           className="form_field-input"

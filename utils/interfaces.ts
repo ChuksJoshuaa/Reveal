@@ -86,6 +86,16 @@ export interface CategoryInterface extends FormInterface {
   filters: string[];
 }
 
+export type ButtonInterface = {
+  type?: "button" | "submit";
+  title: string;
+  isSubmitting: boolean;
+  leftIcon?: string | null;
+  rightIcon?: string | null;
+  bgColor: string | null;
+  textColor: string | null;
+};
+
 export type Provider = {
   id: string;
   name: string;
