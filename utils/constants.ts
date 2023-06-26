@@ -1,3 +1,5 @@
+export const expiryTime = Math.floor(Date.now() / 1000) + 60 * 60;
+
 export const NavLinks = [
   { href: "/", key: "Inspiration", text: "Inspiration" },
   { href: "/", key: "Find Projects", text: "Find Projects" },

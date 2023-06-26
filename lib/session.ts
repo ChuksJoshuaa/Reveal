@@ -11,6 +11,7 @@ import {
   UserProfile,
 } from "@/utils/interfaces";
 import { createUser, getUser } from "./actions";
+import { expiryTime } from "@/utils/constants";
 
 export const authOptions: NextAuthOptions = {
   secret: process.env.NEXT_PUBLIC_AUTH_SECRET,
@@ -21,10 +22,24 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
 
-  // jwt: {
-  //   encode: ({ secret, token }) => {},
-  //   decode: async ({ secret, token }) => {},
-  // },
+  jwt: {
+    encode: ({ secret, token }) => {
+      const encodedToken = jsonwebtoken.sign(
+        {
+          ...token,
+          iss: "grafbase",
+          exp: expiryTime,
+        },
+        secret
+      );
+
+      return encodedToken;
+    },
+    decode: async ({ secret, token }) => {
+      const decodedToken = jsonwebtoken.verify(token!, secret) as JWT;
+      return decodedToken;
+    },
+  },
 
   theme: {
     colorScheme: "light",
