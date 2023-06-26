@@ -44,6 +44,12 @@ export interface UserProfile {
   };
 }
 
+export type UserInterface = {
+  name: string;
+  email: string;
+  avatarUrl: string;
+};
+
 export interface SessionInterface extends Session {
   user: User & {
     id: string;
