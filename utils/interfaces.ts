@@ -73,6 +73,19 @@ export interface FooterInterface {
   links: string[];
 }
 
+export type FormInterface = {
+  type?: string;
+  title: string;
+  state: string;
+  placeholder: string;
+  isTextArea?: boolean;
+  setState: (value: string) => void;
+};
+
+export interface CategoryInterface extends FormInterface {
+  filters: string[];
+}
+
 export type Provider = {
   id: string;
   name: string;

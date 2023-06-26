@@ -26,3 +26,5 @@ your queries and mutations in graphql/index.ts folder and connect it to the acti
 9. Once you are done with all these steps above, navigate to the session.ts folder and go to callbacks to write your logic please
 refer to the session.ts folder if you are stuck.
 
+10. When working with the browser side and you want to make changes in the frontend like using useState, useRef, useRouter from 
+next/router et.c. Please add the "use client" to it
