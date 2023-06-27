@@ -1,0 +1,30 @@
+------------------------ STEPS -------------------------
+1. Go to grafbase.com and sign up. you can sign up via github.
+
+2. Go to https://www.npmjs.com/package/@grafbase/sdk and install the following dependencies
+- npm install @grafbase/sdk --save-dev
+- grafbase init --config-format typescript
+
+3. Once you run the grafbase init --config-format typescript, a grafbase/grafbase.config.ts will be generated for you.
+that's where you can write your schema model. Refer to the code written in grafbase/grafbase.config.ts
+
+4. Once you have sign up using your github. connect the repository that contains the grafbase folder. click
+on import and after importing the project, you can always deploy it. after deploying, click on connect and 2
+random grafbase keys will be generated. the first key is the API End point while the second key is the API
+keys.
+
+5. copy those keys and store them in your .env folder
+
+6. Note: you can generate a random secret key by using this: -----> openssl rand -base64 32 <-----
+
+7. Connection to grafbase. Go to actions.ts folder and follow the same logic there. Note you can start you local
+grafbase environment when working in development by running npx grafbase@0.24 dev
+
+8. After creating your schema model in grafbase/grafbase.config.ts folder. you can run the connections in actions.ts, then create
+your queries and mutations in graphql/index.ts folder and connect it to the actions.ts folder.
+
+9. Once you are done with all these steps above, navigate to the session.ts folder and go to callbacks to write your logic please
+refer to the session.ts folder if you are stuck.
+
+10. When working with the browser side and you want to make changes in the frontend like using useState, useRef, useRouter from 
+next/router et.c. Please add the "use client" to it

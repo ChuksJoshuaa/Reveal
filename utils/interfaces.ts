@@ -32,7 +32,7 @@ export interface UserProfile {
   description: string | null;
   avatarUrl: string;
   githubUrl: string | null;
-  linkedinUrl: string | null;
+  linkedInUrl: string | null;
   projects: {
     edges: { node: ProjectInterface }[];
     pageInfo: {
@@ -43,6 +43,12 @@ export interface UserProfile {
     };
   };
 }
+
+export type UserInterface = {
+  name: string;
+  email: string;
+  avatarUrl: string;
+};
 
 export interface SessionInterface extends Session {
   user: User & {
@@ -66,3 +72,37 @@ export interface FooterInterface {
   title: string;
   links: string[];
 }
+
+export type FormInterface = {
+  type?: string;
+  title: string;
+  state: string;
+  placeholder: string;
+  isTextArea?: boolean;
+  setState: (value: string) => void;
+};
+
+export interface CategoryInterface extends FormInterface {
+  filters: string[];
+}
+
+export type ButtonInterface = {
+  type?: "button" | "submit";
+  title: string;
+  isSubmitting: boolean;
+  leftIcon?: string | null;
+  rightIcon?: string | null;
+  bgColor: string | null;
+  textColor: string | null;
+};
+
+export type Provider = {
+  id: string;
+  name: string;
+  type: string;
+  signinUrl: string;
+  callbackUrl: string;
+  signinUrlParams?: Record<string, string> | null;
+};
+
+export type Providers = Record<string, Provider>;
