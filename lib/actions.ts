@@ -62,7 +62,19 @@ export const uploadImage = async (imagePath: string) => {
   }
 };
 
-export const createProject = async (
+export const fetchToken = async () => {
+  try {
+    const response = await fetch(`${serverUrl}/api/auth/token`);
+
+    let token = response.json();
+    return token;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+export const createNewProject = async (
   form: ProjectForm,
   creatorId: string,
   token: string

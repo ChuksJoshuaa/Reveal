@@ -5,6 +5,8 @@ import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { FormField, CustomMenu, Button } from ".";
 import { categoryFilters } from "@/utils/constants";
+import { createNewProject, fetchToken } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 
 const ProjectForm = ({
   type,
@@ -24,16 +26,27 @@ const ProjectForm = ({
 
   const [form, setForm] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     setIsSubmitting(true);
 
+    const { token } = await fetchToken();
+    let userId = session?.user;
+
     try {
       if (type === "create") {
+        console.log(userId);
+        // await createNewProject(form, session?.user?.id, token);
+        // router.push("/");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
