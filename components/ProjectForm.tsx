@@ -7,6 +7,7 @@ import { FormField, CustomMenu, Button } from ".";
 import { categoryFilters } from "@/utils/constants";
 import { createNewProject, fetchToken } from "@/lib/actions";
 import { useRouter } from "next/navigation";
+import { decode } from "jsonwebtoken";
 
 const ProjectForm = ({
   type,
@@ -34,13 +35,12 @@ const ProjectForm = ({
     setIsSubmitting(true);
 
     const { token } = await fetchToken();
-    let userId = session?.user;
+    let userId = session?.user?.id;
 
     try {
       if (type === "create") {
-        console.log(userId);
-        // await createNewProject(form, session?.user?.id, token);
-        // router.push("/");
+        await createNewProject(form, userId, token);
+        router.push("/");
       }
     } catch (error) {
       console.log(error);

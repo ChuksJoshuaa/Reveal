@@ -92,6 +92,7 @@ export const createNewProject = async (
         image: imageUrl.url,
       },
     };
+
     return makeGraphQLRequest(createProjectMutation, variables);
   }
 };

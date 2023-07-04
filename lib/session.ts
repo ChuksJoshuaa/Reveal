@@ -47,11 +47,13 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    async session({ session }) {
+    async session({ session, token }) {
       const email = session?.user?.email as UserInterface["email"];
 
       try {
         const data = (await getUser(email)) as { user: UserProfile };
+
+        session.user.id = token?.sub;
 
         const newSession = {
           ...session,
