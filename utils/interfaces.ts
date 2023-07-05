@@ -106,3 +106,24 @@ export type Provider = {
 };
 
 export type Providers = Record<string, Provider>;
+
+export type ProjectSearch = {
+  projectSearch: {
+    edges: { node: ProjectInterface }[];
+    pageInfo: {
+      hasPreviousPage: boolean;
+      hasNextPage: boolean;
+      startCursor: string;
+      endCursor: string;
+    };
+  };
+};
+
+export interface ProjectCardProps {
+  id: string;
+  name: string;
+  title: string;
+  avatarUrl: string;
+  userId: string;
+  image: string;
+}

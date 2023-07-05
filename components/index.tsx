@@ -7,7 +7,8 @@ import AuthProviders from "./AuthProviders";
 import Modal from "./Modal";
 import FormField from "./FormField";
 import CustomMenu from "./CustomMenu";
-import Button from "./Button"
+import Button from "./Button";
+import ProjectCard from "./ProjectCard";
 
 export {
   Navbar,
@@ -19,5 +20,6 @@ export {
   Modal,
   FormField,
   CustomMenu,
-  Button
+  Button,
+  ProjectCard,
 };
