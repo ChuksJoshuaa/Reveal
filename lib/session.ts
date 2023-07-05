@@ -47,13 +47,11 @@ export const authOptions: NextAuthOptions = {
   },
 
   callbacks: {
-    async session({ session, token }) {
+    async session({ session }) {
       const email = session?.user?.email as UserInterface["email"];
 
       try {
         const data = (await getUser(email)) as { user: UserProfile };
-
-        session.user.id = token?.sub;
 
         const newSession = {
           ...session,
@@ -78,7 +76,7 @@ export const authOptions: NextAuthOptions = {
           user?: UserProfile;
         };
 
-        if (!userExists) {
+        if (!userExists.user) {
           await createUser(
             user?.name as UserInterface["name"],
             user?.email as UserInterface["email"],

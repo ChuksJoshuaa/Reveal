@@ -7,7 +7,6 @@ import { FormField, CustomMenu, Button } from ".";
 import { categoryFilters } from "@/utils/constants";
 import { createNewProject, fetchToken } from "@/lib/actions";
 import { useRouter } from "next/navigation";
-import { decode } from "jsonwebtoken";
 
 const ProjectForm = ({
   type,
