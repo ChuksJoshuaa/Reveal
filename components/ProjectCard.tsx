@@ -1,6 +1,9 @@
+"use client";
+
 import { ProjectCardProps } from "@/utils/interfaces";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const ProjectCard = ({
   id,
@@ -10,6 +13,15 @@ const ProjectCard = ({
   userId,
   image,
 }: ProjectCardProps) => {
+  const [randomLikes, setRandomLikes] = useState(0);
+  const [randomViews, setRandomViews] = useState("");
+
+  useEffect(() => {
+    setRandomLikes(Math.floor(Math.random() * 10000));
+    setRandomViews(
+      String((Math.floor(Math.random() * 10000) / 1000).toFixed(1) + "k")
+    );
+  }, []);
   return (
     <div className="flexCenter flex-col rounded-2xl drop-shadow-card">
       <Link
@@ -46,11 +58,11 @@ const ProjectCard = ({
         <div className="flexCenter gap-3">
           <div className="flexCenter gap-2">
             <Image src="/hearth.svg" width={13} height={12} alt="heart" />
-            <p className="text-sm">525</p>
+            <p className="text-sm">{randomLikes}</p>
           </div>
           <div className="flexCenter gap-2">
             <Image src="/eye.svg" width={13} height={12} alt="eye" />
-            <p className="text-sm">1.2k</p>
+            <p className="text-sm">{randomViews}</p>
           </div>
         </div>
       </div>
