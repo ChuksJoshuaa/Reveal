@@ -9,6 +9,8 @@ import FormField from "./FormField";
 import CustomMenu from "./CustomMenu";
 import Button from "./Button";
 import ProjectCard from "./ProjectCard";
+import ProjectActions from "./ProjectActions";
+import RelatedProjects from "./RelatedProjects";
 
 export {
   Navbar,
@@ -22,4 +24,6 @@ export {
   CustomMenu,
   Button,
   ProjectCard,
+  ProjectActions,
+  RelatedProjects,
 };
