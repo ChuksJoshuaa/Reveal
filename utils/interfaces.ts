@@ -127,3 +127,8 @@ export interface ProjectCardProps {
   userId: string;
   image: string;
 }
+
+export interface RelatedProps {
+  userId: string;
+  projectId: string;
+}
