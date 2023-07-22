@@ -1,4 +1,4 @@
-import { Categories, ProjectCard } from "@/components";
+import { Categories, Pagination, ProjectCard } from "@/components";
 import { fetchAllProjects } from "@/lib/actions";
 import {
   CategoryProps,
@@ -39,7 +39,8 @@ const Home = async ({ searchParams: { category } }: CategoryProps) => {
           />
         ))}
       </section>
-      <h1>Pagination</h1>
+
+      <Pagination />
     </div>
   );
 };

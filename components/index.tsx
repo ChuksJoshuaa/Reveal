@@ -12,6 +12,7 @@ import ProjectCard from "./ProjectCard";
 import ProjectActions from "./ProjectActions";
 import RelatedProjects from "./RelatedProjects";
 import Categories from "./Categories";
+import Pagination from "./Pagination";
 
 export {
   Navbar,
@@ -28,4 +29,5 @@ export {
   ProjectActions,
   RelatedProjects,
   Categories,
+  Pagination,
 };
