@@ -132,3 +132,10 @@ export interface RelatedProps {
   userId: string;
   projectId: string;
 }
+
+
+export type CategoryProps = {
+  searchParams: {
+    category: string
+  }
+}

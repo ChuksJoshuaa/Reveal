@@ -11,6 +11,7 @@ import Button from "./Button";
 import ProjectCard from "./ProjectCard";
 import ProjectActions from "./ProjectActions";
 import RelatedProjects from "./RelatedProjects";
+import Categories from "./Categories";
 
 export {
   Navbar,
@@ -26,4 +27,5 @@ export {
   ProjectCard,
   ProjectActions,
   RelatedProjects,
+  Categories,
 };

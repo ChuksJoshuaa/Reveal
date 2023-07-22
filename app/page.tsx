@@ -1,8 +1,12 @@
-import { ProjectCard } from "@/components";
+import { Categories, ProjectCard } from "@/components";
 import { fetchAllProjects } from "@/lib/actions";
-import { ProjectInterface, ProjectSearch } from "@/utils/interfaces";
+import {
+  CategoryProps,
+  ProjectInterface,
+  ProjectSearch,
+} from "@/utils/interfaces";
 
-const Home = async () => {
+const Home = async ({ searchParams: { category } }: CategoryProps) => {
   const data = (await fetchAllProjects()) as ProjectSearch;
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
@@ -20,7 +24,7 @@ const Home = async () => {
 
   return (
     <div className="flex-start paddings flex-col mb-16">
-      <h1>Categories</h1>
+      <Categories />
 
       <section className="projects-grid">
         {projectsToDisplay.map(({ node }: { node: ProjectInterface }) => (
