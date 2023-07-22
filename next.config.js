@@ -8,6 +8,9 @@ const nextConfig = {
   images: {
     domains: ["res.cloudinary.com", "lh3.googleusercontent.com"],
   },
+  experimental: {
+    serverComponentsExternalPackages: ["cloudinary", "graphql-request"],
+  },
 };
 
 module.exports = nextConfig;

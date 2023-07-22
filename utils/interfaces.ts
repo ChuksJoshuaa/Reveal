@@ -89,11 +89,11 @@ export interface CategoryInterface extends FormInterface {
 export type ButtonInterface = {
   type?: "button" | "submit";
   title: string;
-  isSubmitting: boolean;
+  isSubmitting?: boolean;
   leftIcon?: string | null;
   rightIcon?: string | null;
-  bgColor: string | null;
-  textColor: string | null;
+  bgColor?: string | null;
+  textColor?: string | null;
 };
 
 export type Provider = {
@@ -106,3 +106,36 @@ export type Provider = {
 };
 
 export type Providers = Record<string, Provider>;
+
+export type ProjectSearch = {
+  projectSearch: {
+    edges: { node: ProjectInterface }[];
+    pageInfo: {
+      hasPreviousPage: boolean;
+      hasNextPage: boolean;
+      startCursor: string;
+      endCursor: string;
+    };
+  };
+};
+
+export interface ProjectCardProps {
+  id: string;
+  name: string;
+  title: string;
+  avatarUrl: string;
+  userId: string;
+  image: string;
+}
+
+export interface RelatedProps {
+  userId: string;
+  projectId: string;
+}
+
+
+export type CategoryProps = {
+  searchParams: {
+    category: string
+  }
+}

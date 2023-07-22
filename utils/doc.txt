@@ -28,3 +28,7 @@ refer to the session.ts folder if you are stuck.
 
 10. When working with the browser side and you want to make changes in the frontend like using useState, useRef, useRouter from 
 next/router et.c. Please add the "use client" to it
+
+11. Errors fixing concerning user id - https://stackoverflow.com/questions/70409219/get-user-id-from-session-in-next-auth-client, 
+https://github.com/nextauthjs/next-auth/discussions/788, https://stackoverflow.com/questions/75438048/cant-resolve-encoding-module-error-while-using-nextjs-13-supabase
+

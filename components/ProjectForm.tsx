@@ -1,17 +1,21 @@
 "use client";
 
-import { SessionInterface } from "@/utils/interfaces";
+import { ProjectInterface, SessionInterface } from "@/utils/interfaces";
 import Image from "next/image";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { FormField, CustomMenu, Button } from ".";
 import { categoryFilters } from "@/utils/constants";
+import { createNewProject, fetchToken, updateProject } from "@/lib/actions";
+import { useRouter } from "next/navigation";
 
 const ProjectForm = ({
   type,
   session,
+  project,
 }: {
   type: string;
   session: SessionInterface;
+  project?: ProjectInterface;
 }) => {
   let initialState = {
     image: "",
@@ -24,16 +28,30 @@ const ProjectForm = ({
 
   const [form, setForm] = useState(initialState);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const router = useRouter();
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
     setIsSubmitting(true);
 
+    const { token } = await fetchToken();
+    let userId = session?.user?.id;
+
     try {
       if (type === "create") {
+        await createNewProject(form, userId, token);
+        router.push("/");
       }
-    } catch (error) {}
+      if (type === "edit") {
+        await updateProject(form, project?.id as string, token);
+        router.push("/");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +81,19 @@ const ProjectForm = ({
       [fieldName]: value,
     }));
   };
+
+  useEffect(() => {
+    if (project?.id) {
+      setForm({
+        image: project?.image,
+        title: project?.title,
+        description: project?.description,
+        liveSiteUrl: project?.liveSiteUrl,
+        githubUrl: project?.githubUrl,
+        category: project?.category,
+      });
+    }
+  }, [project?.id]);
   return (
     <form onSubmit={handleFormSubmit} className="flexStart form">
       <div className="flexStart form_image-container">
