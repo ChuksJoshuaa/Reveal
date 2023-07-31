@@ -6,10 +6,17 @@ import {
   ProjectSearch,
 } from "@/utils/interfaces";
 
-const Home = async ({ searchParams: { category } }: CategoryProps) => {
-  const data = (await fetchAllProjects(category)) as ProjectSearch;
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+export const revalidate = 0;
+
+const Home = async ({
+  searchParams: { category, endcursor },
+}: CategoryProps) => {
+  const data = (await fetchAllProjects(category, endcursor)) as ProjectSearch;
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
+  const pagination = data?.projectSearch?.pageInfo;
 
   if (projectsToDisplay.length === 0) {
     return (
@@ -40,7 +47,12 @@ const Home = async ({ searchParams: { category } }: CategoryProps) => {
         ))}
       </section>
 
-      <Pagination />
+      <Pagination
+        startCursor={pagination?.startCursor}
+        endCursor={pagination?.endCursor}
+        hasNextPage={pagination?.hasNextPage}
+        hasPreviousPage={pagination?.hasPreviousPage}
+      />
     </div>
   );
 };
