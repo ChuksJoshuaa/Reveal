@@ -146,3 +146,9 @@ export type PaginationProps = {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
 };
+
+export interface UserProfileProps {
+  params: {
+    id: string;
+  };
+}

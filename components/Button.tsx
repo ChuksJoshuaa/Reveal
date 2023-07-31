@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MouseEventHandler } from "react";
 
 interface IIProps extends ButtonInterface {
-  handleClick: MouseEventHandler;
+  handleClick?: MouseEventHandler;
 }
 const Button = ({
   title,
