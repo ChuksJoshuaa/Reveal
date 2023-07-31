@@ -1,4 +1,4 @@
-import { Categories, ProjectCard } from "@/components";
+import { Categories, Pagination, ProjectCard } from "@/components";
 import { fetchAllProjects } from "@/lib/actions";
 import {
   CategoryProps,
@@ -6,15 +6,22 @@ import {
   ProjectSearch,
 } from "@/utils/interfaces";
 
-const Home = async ({ searchParams: { category } }: CategoryProps) => {
-  const data = (await fetchAllProjects()) as ProjectSearch;
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+export const revalidate = 0;
+
+const Home = async ({
+  searchParams: { category, endcursor },
+}: CategoryProps) => {
+  const data = (await fetchAllProjects(category, endcursor)) as ProjectSearch;
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
+  const pagination = data?.projectSearch?.pageInfo;
 
   if (projectsToDisplay.length === 0) {
     return (
       <section className="flexStart flex-col paddings">
-        Categories
+        <Categories />
         <p className="no-result-text text-center">
           No projects found, go create some first
         </p>
@@ -39,7 +46,13 @@ const Home = async ({ searchParams: { category } }: CategoryProps) => {
           />
         ))}
       </section>
-      <h1>Pagination</h1>
+
+      <Pagination
+        startCursor={pagination?.startCursor}
+        endCursor={pagination?.endCursor}
+        hasNextPage={pagination?.hasNextPage}
+        hasPreviousPage={pagination?.hasPreviousPage}
+      />
     </div>
   );
 };

@@ -133,9 +133,22 @@ export interface RelatedProps {
   projectId: string;
 }
 
-
 export type CategoryProps = {
   searchParams: {
-    category: string
-  }
+    category: string;
+    endcursor?: string;
+  };
+};
+
+export type PaginationProps = {
+  startCursor: string;
+  endCursor: string;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+};
+
+export interface UserProfileProps {
+  params: {
+    id: string;
+  };
 }
