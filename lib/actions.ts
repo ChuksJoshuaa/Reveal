@@ -30,7 +30,6 @@ const makeGraphQLRequest = async (query: string, variables: {}) => {
     return await client.request(query, variables);
   } catch (error) {
     console.log(error);
-    throw error;
   }
 };
 
@@ -64,7 +63,7 @@ export const uploadImage = async (imagePath: string) => {
 
     return response.json();
   } catch (error) {
-    throw error;
+    console.log(error);
   }
 };
 
@@ -76,7 +75,6 @@ export const fetchToken = async () => {
     return token;
   } catch (error) {
     console.log(error);
-    throw error;
   }
 };
 
