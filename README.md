@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Reveal Zeta Application
+
+<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1691891325/Screenshot_2023-08-13_at_02.45.10_ryu7so.png" title="Image" alt="image">
 
 ## Getting Started
 
