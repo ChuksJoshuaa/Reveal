@@ -1,4 +1,5 @@
 import {
+  allProject,
   createProjectMutation,
   createUserMutation,
   deleteProjectMutation,
@@ -103,8 +104,8 @@ export const createNewProject = async (
 
 export const fetchAllProjects = (category?: string, endCursor?: string) => {
   client.setHeader("x-api-key", apiKey);
-
-  return makeGraphQLRequest(projectsQuery, { category, endCursor });
+  if (!category) return makeGraphQLRequest(allProject, { endCursor });
+  else return makeGraphQLRequest(projectsQuery, { category, endCursor });
 };
 
 export const getProjectDetails = (id: string) => {
