@@ -1,6 +1,6 @@
 # Reveal Zeta Application
 
-<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1691891325/Screenshot_2023-08-13_at_02.45.10_ryu7so.png" title="Image" alt="image">
+<img src="https://res.cloudinary.com/chuksmbanaso/image/upload/v1691891325/Screenshot_2023-08-13_at_02.45.10_ryu7so.png" title="Image" alt="image">.
 
 ## Getting Started
 
